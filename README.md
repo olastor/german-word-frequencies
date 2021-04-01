@@ -6,10 +6,12 @@ Simple word to frequency mappings for the german language based on text corpora 
 
 ### cow16 (~ 42 million unique stemmed words)
 
+The source data already contains a frequency list, but still was preprocessed using the routine in the `decow/` folder.
+
+**Word Frequencies**
+
  - [decow_wordfreq_cistem.csv.7z](https://nlp-data-filestorage.s3.eu-central-1.amazonaws.com/word-frequencies/decow_wordfreq_cistem.csv.7z) (203MB, 672MB uncompressed)
    - md5sum: 5b2797838221fbb9518f2800deee60d4
-
-The source data already contains a frequency list, but still was preprocessed using the routine in the `decow/` folder.
 
 **License & Attribution**
 

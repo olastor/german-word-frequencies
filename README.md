@@ -28,9 +28,15 @@ Raw (un-preprocessed) token frequencies for the german opensubtitles (2018, http
 
 ## Example Usage
 
-Download and extract one of the archives. Then use it like this (may use much memory):
+Download and extract one of the archives. Then use it like this (warning: this way it may use much memory):
 
-```
+```python
 import pandas as pd
-df = pd.read_csv('')
+import nltk
+
+word = 'Onlineumfrage'
+
+stemmer = nltk.stem.Cistem()
+df = pd.read_csv('~/decow_wordfreq_cistem.csv', index_col=['word'])
+df.at[stemmer.stem(word), 'freq'] # => 8490
 ```

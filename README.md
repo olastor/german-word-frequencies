@@ -21,11 +21,16 @@ The original corpus is licensed under Creative Commons Attribution 4.0.
 - [README](https://www.webcorpora.org/opendata/frequencies/german/decow16b/README)
 - [Schäfer (2015)](http://rolandschaefer.net/?p=749) and [Schäfer & Bildhauer (2012)](http://rolandschaefer.net/?p=70)
 
-### opensubtitles
+### opensubtitles (~ 900k unique stemmed words)
 
-TODO
+**Word Frequencies**
 
-// [1]: http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.raw.de.gz
+ - [opensubtitles_cistem_freq.csv](https://github.com/olastor/german-word-frequencies/blob/main/opensubtitles/opensubtitles_cistem_freq.csv?raw=true) (13MB)
+   - md5sum: 7cceeaa18a8c519848ceff88350a9aef
+
+**License & Attribution**
+
+
 
 ## Example Usage
 

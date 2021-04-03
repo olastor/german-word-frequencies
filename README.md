@@ -30,7 +30,7 @@ The original corpus is licensed under Creative Commons Attribution 4.0.
 
 **License & Attribution**
 
-
+P. Lison and J. Tiedemann, 2016, OpenSubtitles2016: Extracting Large Parallel Corpora from Movie and TV Subtitles. In Proceedings of the 10th International Conference on Language Resources and Evaluation (LREC 2016)
 
 ## Example Usage
 

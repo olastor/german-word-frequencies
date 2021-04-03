@@ -1,15 +1,9 @@
-#/usr/bin/env python3
-
+#!/usr/bin/env python3
+import pyspark
 import nltk
-import json
-import pandas as pd
-from collections import defaultdict
+import string
 
-# create word frequency mapping using opensubtitle data and cistem stemmer
-
-DATA_FILE = './de.txt' # download from http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.raw.de.gz
-
-freq = defaultdict(int)
+# create word frequency data from decow using cistem stemmer for preprocessing
 
 stemmer = nltk.stem.Cistem()
 
@@ -17,18 +11,12 @@ def preprocess(s):
     s = s.translate(str.maketrans('', '', string.punctuation))
     return stemmer.stem(s)
 
-def process(line):
-  for token in nltk.word_tokenize(line, language='german'):
-    token = token.strip()
+def map_line(line):
+  tokens = [preprocess(token) for token in nltk.word_tokenize(line, language='german')]
+  return [t for t in tokens if t]
 
-    if not token:
-      continue
+sc = pyspark.SparkContext(appName="word_freq")
 
-    freq[token] += 1
+distFile = sc.textFile("./de.txt") # download from http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.raw.de.gz
 
-with open(DATA_FILE) as f:
-  for line in f:
-    process(line)
-
-df = pd.DataFrame(freq.items(), columns=['word', 'freq'], index=['word'])
-df.to_csv('opensubtitles_cistem_freq.csv')
+distFile.flatMap(map_line).map(lambda x: (x, 1)).reduceByKey(lambda a, b: a + b).map(lambda k: k[0] + '\t' + str(k[1])).saveAsTextFile('results')
